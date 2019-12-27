@@ -1,0 +1,43 @@
+{% extends "learning_logs/base.html" %}
+
+{% block header %}
+    <h2>Topic - {{ topic }}</h2>
+{% endblock header %}
+
+{% block content %}
+
+
+    <p>
+    <h3><a href="{% url 'learning_logs:new_entry' topic.id %}" class="btn btn-primary">Add New Entry</a></h3>
+    </p>
+
+    {% for entry in entries %}
+        <div class="panel panel-default">
+
+            <div class="panel-heading">
+                <h3>{{ entry.date_added|date:'M d, Y H:i' }}
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                            Options <span class="caret"></span></button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{% url 'learning_logs:edit_entry' entry.id %}">Edit entry</a></li>
+                            <li><a href="{% url 'learning_logs:files' %}">Upload a file</a></li>
+                            <li><a href="{% url 'learning_logs:del_entry' entry.id %}">Delete entry</a></li>
+                        </ul>
+                    </div>
+
+
+                </h3>
+            </div>
+
+            <div class="panel-body">
+                {{ entry.text|linebreaks }}
+
+            </div>
+        </div>
+
+    {% empty %}
+        There are no entries for this log yet...
+    {% endfor %}
+
+{% endblock content %}

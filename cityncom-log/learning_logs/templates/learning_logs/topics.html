@@ -1,0 +1,36 @@
+{% extends "learning_logs/base.html" %}
+{% load bootstrap3 %}
+
+{% block header %}
+    <h1>Daily Research Logs</h1>
+{% endblock header %}
+
+{% block content %}
+
+    <ul>
+        {% for topic in topics %}
+            <li>
+                <h3>
+                            <div class="panel panel-default">
+
+            <div class="panel-heading">
+                <a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a>
+                <div class="myBox" style="float:right">
+                    <small><a href="{% url 'learning_logs:del_topic' topic.id %}">Delete topic</a></small>
+                </div>
+            </div>
+
+                </h3>
+            </li>
+        {% empty %}
+            <li>Add a new topic</li>
+        {% endfor %}
+    </ul>
+
+    <p>
+        <h2><a href="{% url 'learning_logs:new_topic' %}" class="btn btn-primary">Add a new log</a></h2>
+    </p>
+
+
+{% endblock content %}
+

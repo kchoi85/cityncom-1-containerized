@@ -1,0 +1,33 @@
+{% extends "learning_logs/base.html" %}
+{% load bootstrap3 %}
+
+
+{% block header %}
+    <h2>Upload Files</h2>
+{% endblock header %}
+
+
+{% block content %}
+    <p>
+        <a href="{% url 'learning_logs:files_upload' %}" class="btn btn-primary">Upload file</a>
+    </p>
+
+                <table class="table">
+                    <thread>
+                        <tr>
+                            <th>Description</th>
+                            <th>Files</th>
+                            <th>Date Added</th>
+                        </tr>
+                    </thread>
+                    <tbody>
+                        {% for upload in uploads %}
+                            <tr>
+                                <td>{{ upload.description }}</td>
+                                <td><a href="{{ upload.document }}">{{ upload.document }}</a></td>
+                                <td>{{ upload.date_added }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+{% endblock %}
