@@ -3,7 +3,7 @@ New features:
 - Added the ability to add files
 - Cleaner UI
 
-## cityncom online log
+## Online Research Log
 test for cityncom
 
 ## Required
