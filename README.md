@@ -1,4 +1,4 @@
-# cityncom-2
+# cityncom-2 Cloud Storage Web Application
 ### New features:
 - Added feature to share files in private folders
 - Cleaner UI at roor directory
